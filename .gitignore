@@ -1,0 +1,9 @@
+.Xil/
+Projects/
+RISC_V_processor.cache/
+RISC_V_processor.hw/
+RISC_V_processor.ip_user_files/
+RISC_V_processor.sim/
+vivado*
+RISC_V_processor.runs/
+*.log
