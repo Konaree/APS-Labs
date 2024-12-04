@@ -29,8 +29,8 @@ module alu (
   output logic [31:0]  result_o
 );
 
-  import alu_opcodes_pkg::*;      // импорт параметров, содержащих
-                                  // коды операций для АЛУ
+  import alu_opcodes_pkg::*;      // opcodes import for ALU
+  
   always_comb begin
     case (alu_op_i)
       ALU_ADD:  result_o = a_i + b_i;
@@ -45,7 +45,7 @@ module alu (
       ALU_SRA:  result_o = $signed(a_i) >>> (b_i[4:0]);
       ALU_SRL:  result_o = (a_i) >> (b_i[4:0]);
       ALU_SLL:  result_o = (a_i) << (b_i[4:0]);
-      default:  result_o = 0;
+      default:  result_o = 32'd0;
     endcase
     
     case (alu_op_i)
@@ -55,7 +55,7 @@ module alu (
       ALU_GEU:  flag_o   = a_i >= b_i; 
       ALU_EQ:   flag_o   = (a_i == b_i);
       ALU_NE:   flag_o   = !(a_i == b_i);
-      default:  flag_o   = 0;
+      default:  flag_o   = 1'b0;
     endcase
     end
 endmodule
