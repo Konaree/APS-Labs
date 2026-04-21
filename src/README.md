@@ -2,14 +2,14 @@
 
 | Module | Description |
 |--------|-------------|
-| [processor_system](src/processor_system.sv) | Top-level module integrating all components |
-| [processor_core](src/processor_core.sv) | Main processor core with PC, decoder, and control logic |
-| [decoder](src/decoder.sv) | Instruction decoder generating all control signals |
-| [alu](src/alu.sv) | Arithmetic Logic Unit with 16 operations |
-| [register_file](src/register_file.sv) | 32x32-bit register file (x0 hardwired to zero) |
-| [lsu](src/lsu.sv) | Load-Store Unit handling memory access alignment |
-| [instr_mem](src/instr_mem.sv) | Instruction memory (ROM, initialized from `program.mem`) |
-| [data_mem](src/data_mem.sv) | Data memory (RAM) with byte-enable write support |
+| [processor_system](processor_system.sv) | Top-level module integrating all components |
+| [processor_core](processor_core.sv) | Main processor core with PC, decoder, and control logic |
+| [decoder](decoder.sv) | Instruction decoder generating all control signals |
+| [alu](alu.sv) | Arithmetic Logic Unit with 16 operations |
+| [register_file](register_file.sv) | 32x32-bit register file (x0 hardwired to zero) |
+| [lsu](lsu.sv) | Load-Store Unit handling memory access alignment |
+| [instr_mem](instr_mem.sv) | Instruction memory (ROM, initialized from `program.mem`) |
+| [data_mem](data_mem.sv) | Data memory (RAM) with byte-enable write support |
 
 ## Supported Instructions
 
@@ -54,6 +54,9 @@
 
 ### program.mem format
 One 32-bit hex word per line
+```
 75C00093    # addi x1, x0, 0x75C
 8A700113    # addi x2, x0, 0x8A7
 002081B3    # add  x3, x1, x2
+...
+```
