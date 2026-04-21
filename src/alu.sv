@@ -30,7 +30,7 @@ module alu (
 );
 
   import alu_opcodes_pkg::*;      // opcodes import for ALU
-  
+
   always_comb begin
     case (alu_op_i)
       ALU_ADD:  result_o = a_i + b_i;
@@ -38,16 +38,16 @@ module alu (
       ALU_XOR:  result_o = a_i ^ b_i;
       ALU_OR:   result_o = a_i | b_i;
       ALU_AND:  result_o = a_i & b_i;
-      
+
       ALU_SLTS: result_o = $signed(a_i) < $signed(b_i);
       ALU_SLTU: result_o = a_i < b_i;
-      
+
       ALU_SRA:  result_o = $signed(a_i) >>> (b_i[4:0]);
       ALU_SRL:  result_o = (a_i) >> (b_i[4:0]);
       ALU_SLL:  result_o = (a_i) << (b_i[4:0]);
       default:  result_o = 32'd0;
     endcase
-    
+
     case (alu_op_i)
       ALU_LTS:  flag_o   = $signed(a_i) < $signed(b_i);
       ALU_LTU:  flag_o   = a_i < b_i;

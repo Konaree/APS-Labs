@@ -24,11 +24,11 @@ module fulladder(
   input  logic a_i,
   input  logic b_i,
   input  logic carry_i,
-  
+
   output logic sum_o,
   output logic carry_o
 );
-    
+
     assign   sum_o = (a_i ^ b_i) ^ carry_i;
     assign carry_o = ((a_i & b_i) | (a_i & carry_i)) | (b_i & carry_i);
     
@@ -48,11 +48,11 @@ module fulladder_parameter #(
 
     // local declarations
     logic [QUANT:0] c;
-    
+
     // assignements
     assign c[0] = carry_i;
     assign carry_o = c[QUANT];
-    
+
     // instantination
     genvar i;
     generate
@@ -60,7 +60,7 @@ module fulladder_parameter #(
         fulladder adder(a_i[i], b_i[i], c[i], sum_o[i], c[i+1]);
       end
     endgenerate
-    
+
 ////    working principle of instantination. Working zaebis
 //    fulladder  adder0 (a_i[0], b_i[0], carry_i, sum_o[0], c[0]);
 //    fulladder  adder1 (a_i[1], b_i[1],    c[0], sum_o[1], c[1]);
